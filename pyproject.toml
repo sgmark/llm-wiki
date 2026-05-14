@@ -1,0 +1,33 @@
+[project]
+name = "wiki"
+version = "0.1.0"
+description = "LLM-powered personal wiki"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=1.0",
+    "typer>=0.12",
+    "rich>=13.0",
+    "python-dotenv>=1.0",
+]
+
+dev-dependencies = [
+    "pytest>=7.0",
+    "pytest-mock>=3.10",
+    "bleach>=6.0",
+]
+
+[project.scripts]
+wiki = "wiki_core.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["wiki_core"]
+
+[dependency-groups]
+dev = [
+    "bleach>=6.3.0",
+]
